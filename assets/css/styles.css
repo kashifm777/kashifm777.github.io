@@ -523,6 +523,7 @@ a.dotted-link:hover {
 .education .item .university .year {
   color: #b0b7bf;
   font-weight: 500;
+  float: right;
 }
 
 /* Language Section */
