@@ -331,6 +331,13 @@ a.dotted-link:hover {
   margin-bottom: 30px;
 }
 
+.experience .content .exp {
+  font-family: "Lato", arial, sans-serif;
+  font-size: 12px;
+  color: #999;
+  padding: 0 25px 0 25px;
+}
+
 .experience .item .title, .certificate .title {
   font-size: 16px;
   margin-top: 0;
@@ -354,6 +361,10 @@ a.dotted-link:hover {
 .experience .item .title .year {
   color: #999;
   font-weight: normal;
+}
+
+.experience .item .year {
+  float: right;
 }
 
 /* certificate section */
