@@ -171,8 +171,11 @@ a.dotted-link:hover {
 }
 
 /* ======= Sections======= */
-.section {
-  margin-bottom: 30px;
+
+
+
+section.about {
+  font-size: 20px;
 }
 
 .section .section-inner {
@@ -194,7 +197,6 @@ a.dotted-link:hover {
   top: -2px;
 }
 
-/* About Section */
 /* Latest Section */
 .latest .item {
   margin-bottom: 30px;
