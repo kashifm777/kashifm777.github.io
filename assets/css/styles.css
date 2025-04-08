@@ -93,6 +93,12 @@ a.btn-cta-secondary:hover, a.btn-cta-secondary:not(:disabled):not(.disabled):act
   box-shadow: none;
 }
 
+/* Adjusting the size of buttons */
+.btn.btn-cta-secondary {
+    font-size: 0.9rem; /* Reduce font size */
+    padding: 0.5rem 1rem; /* Adjust padding */
+}
+
 .text-highlight {
   color: #32383e;
 }
