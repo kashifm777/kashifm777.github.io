@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RAG Pipeline</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+
+    <!-- FontAwesome JS -->
+    <script defer src="../assets/fontawesome/js/all.js"></script>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">  
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="../assets/css/styles.css">
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">     
+            <div class="row align-items-center">
+                <div class="col">         
+                    <img class="profile-image img-fluid float-start rounded-circle" src="../assets/images/profile.jpg" alt="profile image" width="20%" align="center"/>
+                    <div class="profile-content" align="center">
+                        <h1 class="name">Muhammad Kashif</h1>
+                        <hr class="divider" />
+                        <h2 class="desc">AI Engineer | Generative AI | Machine Learning</h2>
+                        <ul class="social list-inline">
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/kashifm777/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="https://github.com/kashifm777" target="_blank"><i class="fab fa-github-alt"></i></a></li>
+                            <li class="list-inline-item"><a href="https://x.com/m_kashif_ai" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://secure.skype.com/portal/profile" target="_blank"><i class="fab fa-skype"></i></a></li>
+                            <li class="list-inline-item"><a href="tel:+923046928830" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                        </ul> 
+                    </div><!--//profile-->
+                </div><!--//col-->
+
+                <div class="col-12 col-md-auto">
+                    <div class="dark-mode-switch d-flex">
+                        <div class="form-check form-switch mx-auto mx-md-0">
+                            <input type="checkbox" class="form-check-input me-2" id="darkSwitch" />
+                            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                        </div>
+                    </div><!--//dark-mode-switch-->     
+                </div><!--//col-->
+            </div><!--//row-->         
+        </div><!--//container-->
+    </header><!--//header-->
+
+    <div class="container sections-wrapper py-5">
+        <section class="article section">
+            <div class="section-inner shadow-sm rounded">
+                
+                <h2 class="heading">Set Up a RAG Pipeline in 5 Steps</h2>
+                <p>Retrieval-Augmented Generation (RAG) is the secret sauce behind smarter, context-aware AI. Imagine ChatGPT with a library card -- it pulls relevant info before answering. As an AI Engineer, I've built RAG pipelines for everything from Q&A bots to expense trackers. Here's how you can set one up in a couple of hours.</p>
+                
+                <h5>Step 1: Pick Your LLM</h5>
+                <p>Start with a lightweight, pre-trained model like LLaMA or Mistral 7B from Hugging Face. They're fast, open-source, and perfect for experimentation. Install the transformers library (<code>pip install transformers</code>) and load it up:</p>
+                <pre><code>
+                    from transformers import AutoModelForCausalLM
+                    model = AutoModelForCausalLM.from_pretrained("mistral-7b")
+                </code></pre>
+                
+                <h5>Step 2: Vectorize Your Documents</h5>
+                <p>Turn your docs into numbers an LLM can understand. Use Sentence Transformers (<code>pip install sentence-transformers</code>) to encode text into embeddings:</p>
+                <pre><code>
+                    from sentence_transformers import SentenceTransformer
+                    encoder = SentenceTransformer('all-MiniLM-L6-v2')
+                    embeddings = encoder.encode(["doc1 text", "doc2 text"])
+                </code></pre>
+
+                <h5>Step 3: Index with FAISS</h5>
+                <p>Speed up retrieval with FAISS (<code>pip install faiss-cpu</code>). Index your embeddings so the pipeline can grab relevant docs fast:</p>
+                <pre><code>
+                    import faiss
+                    index = faiss.IndexFlatL2(embeddings.shape[1])
+                    index.add(embeddings)
+                </code></pre>
+                
+                <h5>Step 4: Retrieve and Prompt</h5>
+                <p>When a query comes in, encode it, search the index, and fetch the top-k results. Feed them to your LLM with a clear prompt:</p>
+                <pre><code>
+                    query = encoder.encode(["What's the budget?"])
+                    D, I = index.search(query, k=3) # Top 3 docs
+                    context = " ".join([docs[i] for i in I[0]])
+                    prompt = f"Answer based on this: {context}"
+                </code></pre>
+                
+                <h5>Step 5: Test and Tweak</h5>
+                <p>Run a test query. If the answers are off, adjust retrieval (e.g., increase k) or refine your docs. My last RAG bot nailed client FAQs after tweaking the context window - precision matters.</p><br>
+
+                <p><i>RAG combines the best of retrieval and generation: accuracy from real data, fluency from LLMs. I built one last week for a support bot, and it cut response time by 40%. What's your next RAG project? Let's talk pipelines - I'm always up for a challenge.</i></p>
+                
+                <center><a class="btn btn-cta-secondary" href="../articles.html"><i class="fas fa-chevron-left"></i>Back to Articles</a></center>
+            </div>
+        </section>
+    </div>
+
+    <script type="text/javascript" src="../assets/plugins/dark-mode-switch/dark-mode-switch.min.js"></script> 
+</body>
+</html>
