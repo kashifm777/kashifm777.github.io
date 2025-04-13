@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RAG Pipeline</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+
+    <!-- FontAwesome JS -->
+    <script defer src="../assets/fontawesome/js/all.js"></script>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">  
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="../assets/css/styles.css">
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">     
+            <div class="row align-items-center">
+                <div class="col">         
+                    <img class="profile-image img-fluid float-start rounded-circle" src="../assets/images/profile.jpg" alt="profile image" width="20%" align="center"/>
+                    <div class="profile-content" align="center">
+                        <h1 class="name">Muhammad Kashif</h1>
+                        <hr class="divider" />
+                        <h2 class="desc">AI Engineer | Generative AI | Machine Learning</h2>
+                        <ul class="social list-inline">
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/kashifm777/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="https://github.com/kashifm777" target="_blank"><i class="fab fa-github-alt"></i></a></li>
+                            <li class="list-inline-item"><a href="https://x.com/m_kashif_ai" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://secure.skype.com/portal/profile" target="_blank"><i class="fab fa-skype"></i></a></li>
+                            <li class="list-inline-item"><a href="tel:+923046928830" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                        </ul> 
+                    </div><!--//profile-->
+                </div><!--//col-->
+
+                <div class="col-12 col-md-auto">
+                    <div class="dark-mode-switch d-flex">
+                        <div class="form-check form-switch mx-auto mx-md-0">
+                            <input type="checkbox" class="form-check-input me-2" id="darkSwitch" />
+                            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                        </div>
+                    </div><!--//dark-mode-switch-->     
+                </div><!--//col-->
+            </div><!--//row-->         
+        </div><!--//container-->
+    </header><!--//header-->
+
+    <div class="container sections-wrapper py-5">
+        <section class="article section">
+            <div class="section-inner shadow-sm rounded">
+                
+                <center><h1 class="heading">Fine-Tune an LLM with Your Data: A Step-by-Step Guide to Personalizing AI</h1></center>
+
+                <p>Large Language Models (LLMs) like Llama, Mistral, and GPT have transformed how we interact with AI. But out of the box, they’re generalists — trained on vast, diverse datasets to handle everything from poetry to physics. What if you need an LLM tailored to your specific domain, like summarizing financial reports or answering customer queries? That’s where fine-tuning comes in.</p>
+                
+                <h4>What Is Fine-Tuning?</h4>
+                <p>Fine-tuning is the process of taking a pre-trained LLM and tweaking its weights with a smaller, specialized dataset. Think of it as giving a well-educated polymath a crash course in your niche — sharpening its skills without starting from scratch.</p>
+
+                <h5>Why Fine-Tune?</h5>
+                <p>Fine-tuning adapts an LLM to your unique data, making it more accurate for tasks like domain-specific Q&A, text generation, or classification</p>
+
+                <h5>Advantages</h5>
+                <ul>
+                    <li><b>Efficiency:</b> Leverage pre-trained knowledge, saving time and compute power versus training from zero.</li>
+                    <li><b>Precision:</b> Boost performance on your use case <i>(e.g., a 10–20% accuracy jump is common)</i>.
+                    </li>
+                    <li><b>Cost-Effectiveness:</b> Open-source LLMs like Mistral 7B let you do this affordably, even on a single GPU.</li>    
+                    <li><b>Customization:</b> Tailor tone, style, or expertise to match your needs — think corporate jargon or casual chat.</li>
+                </ul>
+                <p>In this guide, I’ll walk you through fine-tuning an LLM with your own data, using practical tools and code. Let’s dive in!</p>
+
+                <h5>Step 1: Choose Your LLM</h5>
+                <p>Start with an open-source model suited to your task. For this tutorial, we’ll use Mistral 7B — a 7-billion-parameter model that’s lightweight yet powerful, ideal for fine-tuning on modest hardware.</p>
+
+                <h6>Why Mistral?</h6>
+                <p>It balances performance and efficiency, outperforming many larger models on reasoning tasks.</p>
+                <p>Install the <code>transformers</code> library and load the model:</p>
+                <pre><code>pip install transformers</code></pre>
+
+                <p>Load the model:</p>
+                <pre><code>
+                    from transformers import AutoModelForCausalLM, AutoTokenizer
+                    model_name = “mistralai/Mixtral-7B-v0.1”
+                    model = AutoModelForCausalLM.from_pretrained(model_name)
+                    tokenizer = AutoTokenizer.from_pretrained(model_name)
+                </code></pre>
+
+                <p>For this example, we’ll use the <code>mistral-7b</code> model. It’s a great choice for fine-tuning due to its balance of size and performance.</p>
+
+                <h5>Step 2: Prepare Your Data</h5>
+                <p>Fine-tuning requires a dataset that reflects your specific use case. This could be customer support tickets, product descriptions, or any text relevant to your domain.</p>
+
+                <p>Your data is the heart of fine-tuning. Let’s say you’re building an LLM to summarize meeting notes — a common pain point for professionals.</p>
+
+                <p>Here’s how to prepare your data:</p>
+
+                <h6>Collect your Data</h6>
+                <p>Gather 500–1000 examples, ideally in a structured format (CSV, JSON). More is better, but quality trumps quantity.</p>
+                <ul>
+                    <li><i>Example Format:</i> Pairs of meeting transcripts and summaries.</li>
+                    <li><i>Input:</i> “Team discussed Q1 sales, up 15%, and new product launch delays.”
+                    </li>
+                    <li><i>Output:</i> “Q1 sales up 15%. Product launch delayed.”</li>
+                </ul>
+
+                <h6>Clean Your Data</h6>
+                <p>Remove irrelevant info, typos, and formatting issues. Use libraries like Pandas for data manipulation.</p>
+                <pre><code>
+                    import pandas as pd
+                    data = pd.read_csv(“meeting_notes.csv”)
+                    data = data.dropna() # Drop missing entries
+                    data[“input”] = data[“input”].str.lower().str.strip() # Normalize text
+                </code></pre>
+
+                <h6>Format Your Data for Training</h6>
+                <p>Convert your data into a format the model can understand. For text generation, this usually means pairs of input-output examples.</p>
+                <pre><code>
+                    from datasets import Dataset
+                    dataset = Dataset.from_pandas(data[[“input”, “output”]])
+
+                    def format_example(example):
+                        return {“text”: f”Input: {example[‘input’]}\nOutput: {example[‘output’]}”}
+
+                    dataset = dataset.map(format_example) 
+                </code></pre>
+
+                <h5>Step 3: Fine-Tune Efficiently with LoRA</h5>
+                <p>Training a 7B-parameter model from scratch is resource-intensive. Enter LoRA (Low-Rank Adaptation) — a technique that fine-tunes only a small subset of parameters, slashing memory needs while retaining performance.</p>
+
+                <h6>PEFT:</h6>
+                <p>LoRA is part of the PEFT (Parameter-Efficient Fine-Tuning) library, which simplifies the process. Install it with:</p>
+                <pre><code>pip install peft</code></pre>
+
+                <p>Configure LoRA:</p>
+                <pre><code>
+                    from peft import get_peft_model, LoraConfig
+
+                    config = LoraConfig(
+                        r=16,
+                        lora_alpha=32,
+                        target_modules=[“q_proj”, “v_proj”],
+                        lora_dropout=0.05,
+                        bias="none",
+                    )
+
+                    model = get_peft_model(model, config)
+                </code></pre>
+
+                <p>Load the model and tokenizer:</p>
+                <pre><code>
+                    def tokenize_function(example):
+                        return tokenizer(example[“text”], truncation=True, padding=”max_length”, max_length=512)
+
+                    tokenized_dataset = dataset.map(tokenize_function, batched=True)
+                </code></pre>
+
+                <h5>Step 4: Train the Model</h5>
+                <p>Now, let’s fine-tune on your data. You’ll need a GPU (e.g., Colab’s T4 or an NVIDIA card) for reasonable speed.</p>
+
+                <p>Set Up Training Arguments:</p>
+                <pre><code>
+                    from transformers import Trainer, TrainingArguments
+
+                    training_args = TrainingArguments(
+                        output_dir=”./fine_tuned_model”,
+                        per_device_train_batch_size=4,
+                        num_train_epochs=3,
+                        learning_rate=2e-5,
+                        save_steps=500,
+                        logging_steps=100,
+                    )
+                </code></pre> 
+
+                <p>Launch Training:</p>
+                <pre><code>
+                trainer = Trainer(
+                    model=model,
+                    args=training_args,
+                    train_dataset=tokenized_dataset,
+                )
+                trainer.train()
+                </code></pre>
+
+                <p>Time Check:<br>
+                On a single T4 GPU, 500 examples take ~2–3 hours. More data or epochs scale this up.</p>
+
+                <h5>Step 5: Save and Test Your Model</h5>
+                <p>Once trained, save your fine-tuned model and test its performance.<br>
+                Save:</p>
+
+                <pre><code>
+                    model.save_pretrained(“fine_tuned_mistral”)
+                    tokenizer.save_pretrained(“fine_tuned_mistral”)
+                </code></pre>
+
+                <p>Inference:</p>
+                <pre><code>
+                    input_text = “Input: Team reviewed Q2 goals, hiring freeze lifted, sales steady.”
+                    inputs = tokenizer(input_text, return_tensors=”pt”)
+                    outputs = model.generate(**inputs, max_length=50)
+                    print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+
+                    # Expected: “Output: Q2 goals reviewed, hiring freeze ended, sales stable.”
+                </code></pre>
+
+                <p>Evaluate:<br>
+                Compare outputs to your test set. Metrics like BLEU or manual review can gauge quality.<br>
+
+                <i>Fine-tuning isn’t just technical wizardry — it’s practical magic. My recent project turned a generic LLM into a meeting summary expert, cutting note-taking time by 80%. Businesses can use this for customer support, researchers for data analysis, and developers for niche tools. With open-source models and tools like LoRA, it’s accessible to anyone with a laptop and a dataset.</i></p>
+
+                <h6>Challenges to Watch</h6>
+                <ul>
+                    <li><b>Overfitting:</b> Too few examples or epochs can make the model memorize rather than generalize.</li>
+                    <li><b>Data Quality:</b> Garbage in, garbage out — clean data is non-negotiable.</li>
+                    <li><b>Compute:</b> While LoRA helps, larger models still demand decent hardware.</li>
+                </ul>
+                <h5>What’s Next?</h5>
+                <ul>
+                    <li><b>Deploy:</b> Use Hugging Face’s TGI or a Docker container to serve your model.</li>
+                    <li><b>Experiment:</b> Try different models, datasets, and hyperparameters.</li>
+                    <li><b>Scale:</b> Add more data or experiment with larger models like Llama 4’s Scout (10M token context!).</li>
+                    <li><b>Share:</b> Open-source your fine-tuned model on Hugging Face to boost your credentials!</li>
+                </ul>
+
+                <center><a class="btn btn-cta-secondary" href="../articles.html"><i class="fas fa-chevron-left"></i>Back to Articles</a></center>
+
+            </div>
+        </section>
+    </div>
+
+    <script type="text/javascript" src="../assets/plugins/dark-mode-switch/dark-mode-switch.min.js"></script> 
+</body>
+</html>
