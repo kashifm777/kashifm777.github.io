@@ -16,9 +16,11 @@
 
   var GENAI = 'Generative AI', DJ = 'Django', FA = 'FastAPI', ML = 'Machine Learning',
       ST = 'Streamlit', CV = 'Computer Vision', NB = 'Notebooks', PY = 'Python Apps',
-      GM = 'Python Games', WEB = 'Web Apps', AN = 'Android';
+      GM = 'Python Games', WEB = 'Web Apps', AN = 'Android', RE = 'React';
 
   var projects = [
+    p(RE, 'Novastra CRM', 'novastra-crm', 'novastra_crm.png', 'A full CRM for customers, sales pipeline, deals, tasks and revenue reporting. Built with React 19, TypeScript and Vite; state persists in the browser, so the live demo is fully interactive.', 'https://kashifm777.github.io/novastra-crm/'),
+
     p(GENAI, 'Nutrients Tracker', 'Nutrients_Tracker', 'nutrients.png', 'Estimates calories from a photo of your food using Gemini Pro Vision, with optional text prompts for added context.', 'https://nutrients-tracker.streamlit.app'),
     p(GENAI, 'Invoice Extractor', 'Invoice_Extractor', 'invoice.png', 'Extracts information from invoices using Gemini Pro Vision, driven by user prompts and image analysis.', 'https://invoice-extractor-kashifm777.streamlit.app'),
     p(GENAI, 'Document Genie', 'Document_Genie_with_RAG', 'Document_Genie.png', 'Retrieval-augmented generation over your PDF documents, built on Google\'s Gemini Pro model.', 'https://document-genie-rag.streamlit.app'),
@@ -269,7 +271,7 @@
       { name: 'Arabic', level: 'Beginner' }
     ],
 
-    featured: ['Document Genie', 'Nutrients Tracker', 'Invoice Extractor', 'ExpenseSense', 'Speech-to-Text', 'Bank Note Classification'],
+    featured: ['Novastra CRM', 'Document Genie', 'Nutrients Tracker', 'Invoice Extractor', 'ExpenseSense', 'Bank Note Classification'],
     featuredCerts: ['Deep Learning Specialization', 'British Airways: Data Science', 'Walmart USA: Advanced Software Engineering', 'Google Cloud Platform Fundamentals'],
 
     articles: [
