@@ -174,29 +174,93 @@
 
   window.SITE = {
     github: 'kashifm777',
-    careerStart: '2020-06-01', // drives the "years of experience" counter
+    careerStart: '2020-02-01', // drives the "years of experience" counter
 
-    roles: ['LLM applications', 'RAG pipelines', 'backend systems', 'deep learning models'],
+    roles: ['RAG pipelines', 'GenAI applications', 'efficient systems'],
 
     // Add achievements to "points" and they appear under the role.
     experience: [
-      { role: 'Backend Engineer', company: 'MarkCoders', period: 'Jun 2025 – Present', current: true, points: [] },
-      { role: 'Software Developer', company: 'KNYSYS LLC', period: 'Jun 2024 – May 2025', points: [] },
-      { role: 'Data Scientist', company: 'COVOLV AI', period: 'Jan 2022 – Mar 2024', points: [] },
-      { role: 'Application Developer', company: 'Martos Express Courier (MXC) Services', period: 'Feb 2021 – Oct 2021', points: [] },
-      { role: 'Programming Analyst', company: 'Aga Khan Development Network', period: 'Jun 2020 – Feb 2021', points: [] }
+      {
+        role: 'AI Engineer', company: 'Ahoy Technology', location: 'Dubai, UAE (Remote)',
+        period: 'Nov 2025 – Present', current: true,
+        points: [
+          'Build and maintain AI-centric data processing systems that integrate heterogeneous enterprise data sources.',
+          'Develop scalable ingestion, indexing and retrieval pipelines using distributed systems, graph-based modeling and LLM-assisted workflows.',
+          'Contribute to architecture and reliability decisions across data pipelines, AI services and model orchestration layers.'
+        ]
+      },
+      {
+        role: 'Backend Engineer', company: 'MarkCoders', location: 'Karachi, Pakistan',
+        period: 'Jun 2025 – Nov 2025',
+        points: [
+          'Developed cloud-native backend services supporting scalable, fault-tolerant application workloads.',
+          'Integrated AI/ML-enabled APIs into production systems using containerized deployment workflows.'
+        ]
+      },
+      {
+        role: 'Python Engineer', company: 'KNYSYS', location: 'Karachi, Pakistan',
+        period: 'Jun 2024 – May 2025',
+        points: [
+          'Customized and extended enterprise backend systems using Python-based frameworks.',
+          'Integrated automation and data-driven logic into business workflows.'
+        ]
+      },
+      {
+        role: 'Data Scientist', company: 'COVOLV.AI', location: 'Karachi, Pakistan',
+        period: 'Jan 2022 – Mar 2024',
+        points: [
+          'Developed and evaluated machine learning models for perception and decision-making in applied AI systems.',
+          'Worked with multi-modal data pipelines for training and inference in real-time environments.'
+        ]
+      },
+      {
+        role: 'Application Developer', company: 'MXC Services', location: 'Karachi, Pakistan',
+        period: 'Feb 2021 – Dec 2021',
+        points: [
+          'Architected cross-platform and native mobile applications using Flutter, Kotlin and Java, ensuring high-performance UI/UX across diverse device ecosystems.'
+        ]
+      },
+      {
+        role: 'Programming Analyst', company: 'Aga Khan Development Network', location: 'Karachi, Pakistan',
+        period: 'Feb 2020 – Jan 2021',
+        points: [
+          'Developed mission-critical enterprise applications for healthcare management, covering patient records, automated billing and clinical analytics.'
+        ]
+      }
     ],
 
     education: [
-      { degree: 'MS in Artificial Intelligence', school: 'NED University of Engineering & Technology', period: '2023 – 2025' },
-      { degree: 'BS in Computer Science', school: 'Sindh Madressatul Islam University', period: '2016 – 2019' }
+      {
+        degree: 'MS in Artificial Intelligence', school: 'NED University of Engineering & Technology', period: '2023 – 2025',
+        note: 'Thesis: Knowledge distillation based LLM compression for resource-constrained edge computing systems.'
+      },
+      {
+        degree: 'BS in Computer Science', school: 'Sindh Madressatul Islam University', period: '2016 – 2020',
+        note: 'Final year project: Android app for real-time seat belt violation detection under mobile hardware constraints.'
+      }
     ],
 
     skills: [
-      { group: 'Generative AI & LLMs', items: ['Gemini', 'GPT', 'Claude', 'Llama', 'RAG', 'LLM fine-tuning', 'LoRA / PEFT', 'Hugging Face', 'FAISS'] },
-      { group: 'Machine Learning', items: ['PyTorch', 'TensorFlow', 'Keras', 'scikit-learn', 'Computer vision', 'Pandas'] },
-      { group: 'Backend & Apps', items: ['Python', 'FastAPI', 'Django', 'REST APIs', 'Streamlit', 'Android', 'Flutter'] },
-      { group: 'Data & Delivery', items: ['PostgreSQL', 'SQL', 'NoSQL', 'Git & GitHub', 'Project management'] }
+      { group: 'Generative AI & LLMs', items: ['Agentic RAG', 'Knowledge graphs', 'Multi-modal LLM orchestration', 'Model compression', 'LLM memory management', 'LLM fine-tuning', 'Hugging Face'] },
+      { group: 'Machine Learning', items: ['PyTorch', 'TensorFlow', 'Keras', 'scikit-learn', 'XGBoost', 'OpenCV', 'Computer vision', 'NLP', 'Reinforcement learning', 'CNNs'] },
+      { group: 'Systems & Architecture', items: ['Distributed computing', 'Load balancing', 'RESTful services', 'Async task execution', 'API integration', 'FastAPI', 'Flask'] },
+      { group: 'Cloud & Delivery', items: ['Docker', 'Kubernetes', 'AWS', 'Google Cloud', 'Azure', 'Kafka', 'CI/CD', 'Git', 'Linux'] },
+      { group: 'Languages & Data', items: ['Python', 'SQL', 'Java', 'PostgreSQL', 'LaTeX'] },
+      { group: 'Robotics & Perception', items: ['ROS1', 'ROS2', 'LiDAR', 'Radar', '3D point cloud processing'] }
+    ],
+
+    // Professional work: no public repo, so these render without code links.
+    work: [
+      {
+        title: 'ML-based Detection System', period: '2025', client: 'Government entity',
+        desc: 'High-security camera surveillance and monitoring dashboard. Engineered the image processing solution for headless RHEL environments, with robust performance and remote management on edge devices.',
+        tags: ['Computer vision', 'Edge computing', 'RHEL']
+      },
+      {
+        title: 'Autonomous Driving Systems', period: '2022 – 2024', client: 'COVOLV.AI',
+        desc: 'Core modules for autonomous driving, integrating diverse sensor suites with computer vision algorithms. Optimized real-time data processing pipelines and implemented object detection and spatial awareness for dynamic environments.',
+        tags: ['Sensor fusion', 'Object detection', 'Real-time pipelines']
+      }
     ],
 
     languages: [

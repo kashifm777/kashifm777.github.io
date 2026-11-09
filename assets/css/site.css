@@ -209,7 +209,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .job ul { list-style: disc; padding-left: 18px; margin-top: 10px; color: var(--muted); }
 .job li + li { margin-top: 4px; }
 
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.work {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; display: flex; flex-direction: column; gap: 10px;
+}
+.work-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 20px; }
+.work h3 { font-size: 1.1875rem; }
+.work-client { font-family: var(--mono); font-size: .8125rem; color: var(--accent); }
+.work p:not(.work-client):not(.job-period) { color: var(--muted); font-size: .9375rem; }
+.work .pills { margin-top: auto; padding-top: 6px; }
+
 .edu-list li + li { margin-top: 20px; }
+.edu-note { font-size: .875rem; margin-top: 6px; line-height: 1.5; }
 .edu-list h3 { font-size: 1.0625rem; }
 .edu-list p { color: var(--muted); font-size: .9375rem; }
 .lang-list { display: flex; flex-wrap: wrap; gap: 8px 24px; }

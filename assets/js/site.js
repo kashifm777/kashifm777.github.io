@@ -327,15 +327,30 @@
     $('#experience-list').innerHTML = S.experience.map(function (x) {
       return '<li class="job reveal' + (x.current ? ' is-current' : '') + '">' +
         '<div class="job-head"><div><h3>' + esc(x.role) + '</h3>' +
-        '<p class="job-company">' + esc(x.company) + '</p></div>' +
+        '<p class="job-company">' + esc(x.company) + (x.location ? ' <span class="muted">· ' + esc(x.location) + '</span>' : '') + '</p></div>' +
         '<p class="job-period">' + esc(x.period) + '</p></div>' +
         (x.points && x.points.length ? '<ul>' + x.points.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
       '</li>';
     }).join('');
 
     $('#education-list').innerHTML = S.education.map(function (e) {
-      return '<li class="reveal"><h3>' + esc(e.degree) + '</h3><p>' + esc(e.school) + '</p><p class="muted mono">' + esc(e.period) + '</p></li>';
+      return '<li class="reveal"><h3>' + esc(e.degree) + '</h3><p>' + esc(e.school) + '</p>' +
+        '<p class="muted mono">' + esc(e.period) + '</p>' +
+        (e.note ? '<p class="edu-note muted">' + esc(e.note) + '</p>' : '') + '</li>';
     }).join('');
+
+    var work = $('#work-list');
+    if (work && S.work) {
+      work.innerHTML = S.work.map(function (w) {
+        return '<article class="work reveal">' +
+          '<div class="work-head"><h3>' + esc(w.title) + '</h3>' +
+          '<p class="job-period">' + esc(w.period) + '</p></div>' +
+          '<p class="work-client">' + esc(w.client) + '</p>' +
+          '<p>' + esc(w.desc) + '</p>' +
+          '<ul class="pills">' + w.tags.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' +
+        '</article>';
+      }).join('');
+    }
 
     $('#skills-list').innerHTML = S.skills.map(function (g) {
       return '<div class="skill-group reveal"><h3>' + esc(g.group) + '</h3><ul class="pills">' +
