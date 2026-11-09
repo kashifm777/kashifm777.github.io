@@ -1,75 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Articles</title>
-
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
-
-    <!-- FontAwesome JS -->
-    <script defer src="assets/fontawesome/js/all.js"></script>
-
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">  
-
-    <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-</head> 
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Articles | Muhammad Kashif</title>
+  <meta name="description" content="Practical articles on RAG pipelines and fine-tuning LLMs by Muhammad Kashif.">
+  <meta name="author" content="Muhammad Kashif">
+  <link rel="canonical" href="https://kashifm777.github.io/articles.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Articles | Muhammad Kashif">
+  <meta property="og:description" content="Practical articles on RAG pipelines and fine-tuning LLMs by Muhammad Kashif.">
+  <meta property="og:url" content="https://kashifm777.github.io/articles.html">
+  <meta property="og:image" content="https://kashifm777.github.io/assets/images/profile.jpg">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      d.setAttribute('data-theme', t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
 <body>
-    <!-- ******HEADER****** --> 
-    <header class="header">
-        <div class="container">     
-            <div class="row align-items-center">
-                <div class="col">         
-                    <img class="profile-image img-fluid float-start rounded-circle" src="assets/images/profile.jpg" alt="profile image" width="20%" align="center"/>
-                    <div class="profile-content" align="center">
-                        <h1 class="name">Muhammad Kashif</h1>
-                        <hr class="divider" />
-                        <h2 class="desc">AI Engineer | Generative AI | Machine Learning</h2>
-                        <ul class="social list-inline">
-                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/kashifm777/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li class="list-inline-item"><a href="https://github.com/kashifm777" target="_blank"><i class="fab fa-github-alt"></i></a></li>
-                            <li class="list-inline-item"><a href="https://x.com/m_kashif_ai" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="https://secure.skype.com/portal/profile" target="_blank"><i class="fab fa-skype"></i></a></li>
-                            <li class="list-inline-item"><a href="tel:+923046928830" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                        </ul> 
-                    </div><!--//profile-->
-                </div><!--//col-->
-
-                <div class="col-12 col-md-auto">
-                    <div class="dark-mode-switch d-flex">
-                        <div class="form-check form-switch mx-auto mx-md-0">
-                            <input type="checkbox" class="form-check-input me-2" id="darkSwitch" />
-                            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-                        </div>
-                    </div><!--//dark-mode-switch-->     
-                </div><!--//col-->
-            </div><!--//row-->         
-        </div><!--//container-->
-    </header><!--//header-->
-
-    <div class="container sections-wrapper py-5">
-        <section class="articles section">
-            <div class="section-inner shadow-sm rounded">
-                <h2 class="heading">Articles</h2>
-                <ol>
-                    <li><a href="articles/rag-pipeline.html">RAG Pipeline</a></li>
-                    <li><a href="articles/fine-tune-llm.html">Fine Fine a Custom LLM</a> </li>
-                    <li><a href="#">.. More to come</a></li>
-                </ol>
-                <p>Meanwhile, explore more articles on my <a href="https://medium.com/@kashif.ai.dev" target="_blank">Medium profile</a>.</p>
-                <hr>
-                <center><a class="btn btn-cta-secondary" href="index.html"><i class="fas fa-chevron-left"></i>Back to Home</a></center>
-            </div>
-        </section>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html">Muhammad Kashif<span>.</span></a>
+      <div class="header-actions">
+        <nav id="site-nav" aria-label="Main"><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#experience">Experience</a></li><li><a href="projects.html">Projects</a></li><li><a href="articles.html" aria-current="page">Articles</a></li><li><a href="certificates.html">Certificates</a></li><li><a href="index.html#contact">Contact</a></li></ul></nav>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode"><i class="fa-solid fa-moon" aria-hidden="true"></i><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+        <button id="nav-toggle" class="icon-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
     </div>
-
-    <script type="text/javascript" src="assets/plugins/dark-mode-switch/dark-mode-switch.min.js"></script> 
+  </header>
+  <main id="main">
+    <div class="wrap page-head">
+      <h1>Articles</h1>
+      <p>Practical notes on building with LLMs. You'll find more on <a class="text-link" href="https://medium.com/@kashif.ai.dev" target="_blank" rel="noopener">Medium</a>.</p>
+    </div>
+    <div class="wrap page-body">
+      <div class="card-grid" id="article-list"></div>
+      <noscript><p class="muted">This section needs JavaScript. You can find my work on <a href="https://github.com/kashifm777">GitHub</a>.</p></noscript>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <span>&copy; <span data-year></span> Muhammad Kashif</span>
+      <div class="socials"><a href="https://www.linkedin.com/in/kashifm777/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a><a href="https://github.com/kashifm777" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a><a href="https://x.com/m_kashif_ai" target="_blank" rel="noopener" aria-label="X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a><a href="https://medium.com/@kashif.ai.dev" target="_blank" rel="noopener" aria-label="Medium" title="Medium"><i class="fa-brands fa-medium" aria-hidden="true"></i></a><a href="https://wa.me/923046928830" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a></div>
+    </div>
+  </footer>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>
